@@ -27,13 +27,22 @@ const planetSchema = new Schema(
       type: String,
     },
     surfaceArea: {
-      type: Number,
+      type: {
+        surfaceValue: Number,
+        surfaceExponent: Number,
+      },
     },
     volume: {
-      type: Number,
+      type: {
+        volumeValue: Number,
+        volumeExponent: Number,
+      },
     },
     mass: {
-      type: Number,
+      type: {
+        massValue: Number,
+        massExponent: Number,
+      },
     },
   },
   {
