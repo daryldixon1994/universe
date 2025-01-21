@@ -1,6 +1,8 @@
 const express = require("express");
 const route = express.Router();
 const Planet = require("../models/Planet");
+const fs = require("fs");
+const path = require("path");
 
 route.get("/planets", async (req, res) => {
   try {
@@ -97,6 +99,18 @@ route.delete("/planet/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(400).json({ status: false, error });
+  }
+});
+
+route.get("/planets/images/:filename", (req, res) => {
+  try {
+    const { filename } = req.params;
+    const moonPath = path.resolve("assets", filename);
+    const imageContent = fs.readFileSync(moonPath);
+    const extension = path.extname(moonPath);
+    res.set({ "Content-type": `image/${extension}` }).send(imageContent);
+  } catch (error) {
+    console.log(error);
   }
 });
 
