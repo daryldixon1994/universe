@@ -7,7 +7,7 @@ const connect = require("./connect");
 connect();
 app.use(
   cors({
-    origin: ["http://127.0.0.1:5500", "https://milky-way-solar-system.netlify.app/"],
+    origin: ["http://127.0.0.1:5500", "https://milky-way-solar-system.netlify.app"],
   })
 );
 app.use(express.json());
